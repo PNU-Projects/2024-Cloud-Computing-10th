@@ -1,0 +1,3 @@
+[submodule "spring"]
+	path = spring
+	url = git@github.com:kimjimyeong/mbti.git
