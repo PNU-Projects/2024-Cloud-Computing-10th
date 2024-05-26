@@ -1,19 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Box } from '@mui/material';
 import ProgressBar from '@/components/ProcessBar';
 import QuestionCard from '@/components/QuestionCard';
 import AnswerButton from '@/components/AnswerButton';
 import { answerData } from '@/mocks/answerData';
 import { questionData } from '@/mocks/questionData';
-import { useRouter } from 'next/navigation';
+
+interface Answer {
+  questionId: number;
+  answer: number;
+}
 
 const Page = () => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [answers, setAnswers] = useState<Answer[]>([]);
   const router = useRouter();
 
-  const handleOnClick = () => {
+  const handleOnClick = (questionId: number, answerId: number) => {
+    setAnswers((prevAnswers) => [...prevAnswers, { questionId, answer: answerId }]);
+
     if (currentQuestionIndex < questionData.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -42,7 +50,12 @@ const Page = () => {
           ),
       )}
       {answerData.map((answer) => (
-        <AnswerButton key={answer.id} id={answer.id} content={answer.content} onClick={handleOnClick} />
+        <AnswerButton
+          key={answer.id}
+          id={answer.id}
+          content={answer.content}
+          onClick={() => handleOnClick(questionData[currentQuestionIndex].id, answer.id)}
+        />
       ))}
     </Box>
   );
