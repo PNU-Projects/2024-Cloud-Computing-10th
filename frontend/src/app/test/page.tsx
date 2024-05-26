@@ -17,7 +17,6 @@ const Page = () => {
     if (currentQuestionIndex < questionData.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // TODO: 결과 페이지로 이동
       router.push('/result');
     }
   };
