@@ -1,10 +1,12 @@
 on:
-  push:
+  pull_request:
     branches:
-      - 'wonseok/deploy-frontend-workflow'
+      - main
+    types: [labeled]
   
 jobs:
   build-image:
+    if: ${{ github.event.label.name == 'frontend' }}
     name: Build and Push Frontend Image
     runs-on: ubuntu-latest
 
