@@ -35,7 +35,7 @@ const Page = () => {
               ':hover': { bgcolor: 'gray' },
             }}
           >
-            시작하기
+            빌드 테스트
           </Button>
         </Link>
       </Box>
