@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 
 import ResultCard from '@/components/ResultCard';
 
@@ -15,12 +15,14 @@ interface Result {
 
 const Page = () => {
   const [result, setResult] = useState<Result>({ developer: '', comment: '' });
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchResult = async () => {
       try {
         const resultData = await getResult();
         setResult(resultData);
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch result:', error);
       }
@@ -41,7 +43,11 @@ const Page = () => {
         alignItems: 'center',
       }}
     >
-      <ResultCard developer={result.developer} comment={result.comment} />
+      {loading ? (
+        <CircularProgress color="inherit" />
+      ) : (
+        <ResultCard developer={result.developer} comment={result.comment} />
+      )}
     </Box>
   );
 };
