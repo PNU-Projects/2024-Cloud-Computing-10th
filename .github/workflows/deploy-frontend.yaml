@@ -1,0 +1,40 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types: [labeled]
+  
+jobs:
+  build-image:
+    if: github.event.label.name == 'frontend'
+    name: Build and Push Frontend Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Set up AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
+      
+      - name: Build and Push docker image to ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REGISTRY_ALIAS: c9z7b3l2
+          REPOSITORY: frontend
+        run: |
+          docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY ./frontend
+          docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY
