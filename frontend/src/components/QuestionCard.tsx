@@ -14,7 +14,7 @@ const QuestionCard = ({ id, content }: QuestionCardProps) => {
         padding: '10px',
         marginBottom: '10px',
         width: 500,
-        height: 200,
+        height: 150,
       }}
     >
       <Typography variant="h4" gutterBottom>
