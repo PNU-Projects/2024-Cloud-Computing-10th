@@ -1,8 +1,33 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import { Box } from '@mui/material';
+
 import ResultCard from '@/components/ResultCard';
-import { resultData } from '@/mocks/resultData';
+
+import { getResult } from '../api/api';
+
+interface Result {
+  developer: string;
+  comment: string;
+}
 
 const Page = () => {
+  const [result, setResult] = useState<Result>({ developer: '', comment: '' });
+
+  useEffect(() => {
+    const fetchResult = async () => {
+      try {
+        const resultData = await getResult();
+        setResult(resultData);
+      } catch (error) {
+        console.error('Failed to fetch result:', error);
+      }
+    };
+    fetchResult();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -16,7 +41,7 @@ const Page = () => {
         alignItems: 'center',
       }}
     >
-      <ResultCard developer={resultData.developer} comment={resultData.comment} />
+      <ResultCard developer={result.developer} comment={result.comment} />
     </Box>
   );
 };
