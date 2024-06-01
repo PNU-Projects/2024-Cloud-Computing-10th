@@ -22,7 +22,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
-          aws-region: ap-southeast-2
+          aws-region: us-east-1
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -33,7 +33,8 @@ jobs:
       - name: Build and Push docker image to ECR
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: llpk-frontend
+          REGISTRY_ALIAS: c9z7b3l2
+          REPOSITORY: frontend
         run: |
-          docker build -t $REGISTRY/$REPOSITORY ./frontend
-          docker push $REGISTRY/$REPOSITORY
+          docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY ./frontend
+          docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY
