@@ -1,8 +1,8 @@
 'use client';
 
-import { Box, Button, Link } from '@mui/material';
-
 import Image from 'next/image';
+
+import { Box, Button, Link } from '@mui/material';
 
 import MainImage from '../assets/main.png';
 
@@ -21,7 +21,9 @@ const Page = () => {
       }}
     >
       <Box sx={{ position: 'relative' }}>
-        <Image src={MainImage} alt="MainImage" width={400} height={400} />
+        <Box sx={{ marginLeft: '25px' }}>
+          <Image src={MainImage} alt="MainImage" width={400} height={400} priority />
+        </Box>
         <Link href="/test">
           <Button
             variant="contained"
