@@ -13,7 +13,7 @@ jobs:
     - name: Excecute Remote SSH Commands
       uses: appleboy/ssh-action@v1.0.3
       with:
-          key: ${{ secrets.AWS_EC2_PRIVATE_KEY }}
+          key: ${{ secrets.AWS_EC2_SSH_KEY }}
           host: cloud.longliveprofessorkim.com
           username: ec2-user
           script: |
