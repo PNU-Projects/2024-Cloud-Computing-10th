@@ -22,6 +22,7 @@ fi
 function docker_stop() {
   printf '컨테이너 %s를 종료합니다' $CONTAINER
   docker stop $CONTAINER
+  docker rm $CONTAINER
 }
 
 function docker_start() {
