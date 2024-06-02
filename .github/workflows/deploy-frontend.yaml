@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'frontend/**'
+
+jobs:
+  deploy-frontend:
+    name: SSH into EC2 and Deploy Frontend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Excecute Remote SSH Commands
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+          key: ${{ secrets.AWS_EC2_SSH_KEY }}
+          host: cloud.longliveprofessorkim.com
+          username: ec2-user
+          script: |
+            ./deploy/docker-restart.sh frontend 
