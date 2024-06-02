@@ -21,7 +21,7 @@ services:
       - longliveprofessorkim
 
   frontend:
-    image: cotidie/longliveprofessorkim-frontend
+    image: public.ecr.aws/c9z7b3l2/frontend
     ports:
       - 3000:3000
     container_name: frontend
