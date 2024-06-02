@@ -2,6 +2,7 @@
 # Stage 1: 종속성 설치 및 nextjs 빌드 #
 ###################################
 FROM node:22-alpine as build
+ENV NEXT_PUBLIC_API_URL http://cloud.longliveprofessorkim.com/api
 
 # nextjs를 빌드하고 실행할 위치
 WORKDIR /app
@@ -15,7 +16,6 @@ RUN yarn build
 # Stage 2: nextjs 실행
 ###################################
 FROM node:22-alpine
-ENV NEXT_PUBLIC_API_URL http://cloud.longliveprofessorkim.com/api
 
 WORKDIR /app
 COPY --from=build /app/yarn.lock .
