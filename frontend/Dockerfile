@@ -15,7 +15,7 @@ RUN yarn build
 # Stage 2: nextjs 실행
 ###################################
 FROM node:22-alpine
-ENV NEXT_PUBLIC_API_URL cloud.longliveprofessorkim.com/api
+ENV NEXT_PUBLIC_API_URL http://cloud.longliveprofessorkim.com/api
 
 WORKDIR /app
 COPY --from=build /app/yarn.lock .
