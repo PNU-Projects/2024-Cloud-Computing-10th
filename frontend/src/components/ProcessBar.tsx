@@ -7,7 +7,7 @@ interface ProgressBarProps {
 
 const ProgressBar = ({ current, maximum }: ProgressBarProps) => {
   return (
-    <Box sx={{ margin: '50px', width: 300 }}>
+    <Box sx={{ marginBottom: '50px', width: 300 }}>
       <LinearProgress
         variant="determinate"
         value={(current / maximum) * 100}
