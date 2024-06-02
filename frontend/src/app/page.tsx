@@ -37,7 +37,7 @@ const Page = () => {
               ':hover': { bgcolor: 'gray' },
             }}
           >
-            시작하기
+            CI/CD 테스트
           </Button>
         </Link>
       </Box>
