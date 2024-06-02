@@ -35,7 +35,7 @@ function docker_start() {
   fi
 
   printf '서비스를 다시 시작합니다.\n'
-  docker-compose up -d $CONTAINER
+  docker-compose -f $DIR/docker-compose.yaml up -d $CONTAINER
 }
 
 docker_stop
