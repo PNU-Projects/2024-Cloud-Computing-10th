@@ -71,7 +71,7 @@ const Page = () => {
               <QuestionCard
                 key={currentQuestion.id}
                 id={currentQuestion.id}
-                content="본인에게 더 알맞은 답안을 고르시오."
+                content="본인에게 더 적합한 답안을 고르시오."
               />
               <AnswerButton
                 key={`${currentQuestion.id}-1`}
