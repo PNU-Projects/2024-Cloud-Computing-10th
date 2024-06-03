@@ -60,18 +60,7 @@ const Page = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: '45%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <>
       {loading ? (
         <CircularProgress color="inherit" />
       ) : (
@@ -98,7 +87,7 @@ const Page = () => {
           )}
         </>
       )}
-    </Box>
+    </>
   );
 };
 

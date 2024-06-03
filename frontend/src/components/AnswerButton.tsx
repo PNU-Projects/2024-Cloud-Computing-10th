@@ -17,8 +17,6 @@ const AnswerButton = ({ content, onClick }: AnswerButtonProps) => {
         borderRadius: '50px',
         bottom: '-40px',
         marginTop: '20px',
-        left: '50%',
-        transform: 'translateX(-50%)',
         ':hover': { bgcolor: 'black' },
       }}
       onClick={onClick}

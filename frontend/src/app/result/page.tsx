@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 import ResultCard from '@/components/ResultCard';
 
 import { getResult } from '../api/api';
+import ResultImage from '../../assets/result.png';
 
 interface Result {
   developer: string;
@@ -31,24 +33,31 @@ const Page = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <>
       {loading ? (
         <CircularProgress color="inherit" />
       ) : (
-        <ResultCard developer={result.developer} comment={result.comment} />
+        <>
+          {/* 저작자 표시 */}
+          <Typography
+            component="a"
+            href="https://www.flaticon.com/kr/free-icons"
+            sx={{
+              fontSize: '10px',
+              color: 'gray',
+              textDecoration: 'none',
+            }}
+          >
+            Flat Icons - Flaticon
+          </Typography>
+          <Box sx={{ marginBottom: 2 }}>
+            <Image src={ResultImage} alt="ResultImage" width={200} height={200} priority />
+          </Box>
+          <ResultCard developer={result.developer} comment={result.comment} />
+        </>
       )}
-    </Box>
+    </>
   );
 };
+
 export default Page;
