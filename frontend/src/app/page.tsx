@@ -37,7 +37,7 @@ const Page = () => {
             ':hover': { bgcolor: 'gray' },
           }}
         >
-          시작하기
+          동영상 설명
         </Button>
       </Link>
     </Box>
