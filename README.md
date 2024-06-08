@@ -126,19 +126,6 @@
 
 
 # 프로젝트 개발 결과물
-
-#### 시스템 구조
-
----
-
-![image-20240608154550155](C:\Users\박형주\AppData\Roaming\Typora\typora-user-images\image-20240608154550155.png)
-
-#### 아키텍쳐 구조
-
----
-
-
-
 ![다이어그램](/images/diagram_techstack.png)  
 
 
