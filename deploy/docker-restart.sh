@@ -41,3 +41,4 @@ function docker_start() {
 
 docker_stop
 docker_start
+source $DIR/notify-deploy.sh $CONTAINER $IMAGE
